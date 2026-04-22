@@ -44,7 +44,7 @@ This project builds a production-grade demand forecasting and inventory risk int
 
 ## Dashboard
 
-![Dashboard](screenshots/Walmart_forecast_dashboard.png)
+![Dashboard](Walmart_forecast_dashboard.png)
 
 ---
 
@@ -56,7 +56,8 @@ This project builds a production-grade demand forecasting and inventory risk int
 
 Ingested 4 M5 Walmart CSV files via Kaggle API directly into Databricks. The sales file arrives in wide format — 30,490 rows × 1,913 day-columns. A PySpark stack() unpivot transforms this into 58,327,370 properly structured rows. All files written as ACID-compliant Delta tables.
 
-![Bronze Unpivot](screenshots/02_bronze_unpivot.png)
+![Bronze Unpivot](02_bronze_unpivot.png)
+
 
 | Table | Rows |
 |-------|------|
@@ -65,7 +66,7 @@ Ingested 4 M5 Walmart CSV files via Kaggle API directly into Databricks. The sal
 | bronze_prices | 6,841,121 |
 | bronze_sales_eval | 30,490 |
 
-![Bronze Validation](screenshots/04_bronze_validation.png)
+![Bronze Validation](04_bronze_validation.png)
 
 ### Silver — Feature Engineering
 
@@ -96,7 +97,7 @@ Top 5 highest-revenue-at-risk items piped through Llama 3 70B via Databricks Mos
 
 Trained 10 store-specific XGBoost models in parallel using PySpark applyInPandas — one model per store, each logged independently in MLflow.
 
-![ML Results](screenshots/ML_Results.png)
+![ML Results](ML_Results.png)
 
 | Store | RMSE | Baseline | Improvement |
 |-------|------|----------|-------------|
@@ -121,7 +122,7 @@ Tests include not_null, unique, and accepted_values for risk_tier and model_grad
 
 ### Airflow — Weekly Orchestration
 
-![Airflow DAG](screenshots/Airflow_pipeline.png)
+![Airflow DAG](Airflow_pipeline.png)
 
 8-task DAG scheduled weekly orchestrating the full pipeline end-to-end.
 
